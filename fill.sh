@@ -22,5 +22,6 @@ do
 	fi
 
 	mysql -h "${HOSTPREFIX}15${SRV}" -u ${USER} -p${PASS} ${DB} -e "insert into log (id, server, pos, number) values ( ((SELECT nid FROM (SELECT max(id)+1 AS nid FROM log ) AS x)), '${HOSTPREFIX}15${SRV}','${NR}','${NUMBER}');"
+	sleep 1
 
 done
