@@ -6,7 +6,7 @@ while true
 do 
 
 	SRV=$(( RANDOM % 3 ))
-	NR=$(( RANDOM % 9 ))
+	NR=$(( RANDOM % 9 +1 ))
 	NUMBER=$RANDOM
 
 	mysql -h "${HOSTPREFIX}15${SRV}" -u ${USER} -p${PASS} ${DB} -e "update numbers set number=${NUMBER} where id=${NR};"
