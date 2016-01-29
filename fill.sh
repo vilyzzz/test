@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Author Vilius A.
 . config.priv
 
 while true
