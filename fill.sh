@@ -41,7 +41,7 @@ do
 		mysql -h "${HOSTPREFIX}24${SRV}" -u ${USER} -p${PASS} ${DB} -e "update stats set number=number+1 where id='odd';"
 	fi
 
-	mysql -h "${HOSTPREFIX}24${SRV}" -u ${USER} -p${PASS} ${DB} -e "insert into logs (id, server, pos, number) values ( ((SELECT nid FROM (SELECT max(id)+1 AS nid FROM log ) AS x)), '${HOSTPREFIX}15${SRV}','${NR}','${NUMBER}');"
+	mysql -h "${HOSTPREFIX}24${SRV}" -u ${USER} -p${PASS} ${DB} -e "insert into logs (id, server, pos, number) values ( ((SELECT nid FROM (SELECT max(id)+1 AS nid FROM logs ) AS x)), '${HOSTPREFIX}15${SRV}','${NR}','${NUMBER}');"
 	sleep 1
 
 done
