@@ -27,6 +27,7 @@ do
 
 	SRV=$(( RANDOM % 3 +6))
 	NR=$(( RANDOM % 9 +1 ))
+	SLEEP=$(( RANDOM % 2 ))
 	NUMBER=$RANDOM
 
 	mysql -h "${HOSTPREFIX}24${SRV}" -u ${USER} -p${PASS} ${DB} -e "update numbers set number=${NUMBER} where id=${NR};"
@@ -42,6 +43,6 @@ do
 	fi
 
 	mysql -h "${HOSTPREFIX}24${SRV}" -u ${USER} -p${PASS} ${DB} -e "insert into logs (id, server, pos, number) values ( ((SELECT nid FROM (SELECT max(id)+1 AS nid FROM logs ) AS x)), '${HOSTPREFIX}15${SRV}','${NR}','${NUMBER}');"
-	sleep 1
+	sleep ${SLEEP}
 
 done
